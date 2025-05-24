@@ -15,13 +15,7 @@ git clone https://github.com/oteofof/teammates-finder-bot.git
 cd teammates-finder-bot
 ```
 
-2. Install requirements:
-```bash
-pip install -r requirements.txt
-```
-
-3. Configure:
-- Rename `config_example.py` to `config.py`
+2. Configure:
 - Add your bot token
 
 4. Run:
