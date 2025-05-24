@@ -16,7 +16,7 @@ cd teammates-finder-bot
 ```
 
 2. Configure:
-- Add your bot token
+- Add your bot token and admin chat id
 
 3. Run:
 ```bash
