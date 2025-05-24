@@ -18,7 +18,7 @@ cd teammates-finder-bot
 2. Configure:
 - Add your bot token
 
-4. Run:
+3. Run:
 ```bash
 python main.py
 ```
