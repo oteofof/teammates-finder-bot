@@ -11,7 +11,7 @@ Telegram bot for finding teammates in Dota 2, CS2 and Valorant.
 ## Installation
 1. Clone repo:
 ```bash
-git clone https://github.com/ваш_логин/teammates-finder-bot.git
+git clone https://github.com/oteofof/teammates-finder-bot.git
 cd teammates-finder-bot
 ```
 
