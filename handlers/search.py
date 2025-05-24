@@ -54,7 +54,6 @@ def show_search_menu(bot, message):
     bot.send_message(message.chat.id, "Выберите вариант поиска:", reply_markup=markup)
 
 def search_by_current_game(bot, message):
-    """Поиск по текущей игре пользователя"""
     profile = get_profile_from_db(message.from_user.id)
     if not profile:
         bot.send_message(message.chat.id, "❌ Сначала заполните анкету!")
