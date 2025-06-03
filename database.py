@@ -256,8 +256,7 @@ def migrate_db():
     try:
         conn = sqlite3.connect('teammates.db')
         c = conn.cursor()
-        
-        # Добавляем новые столбцы, если их нет
+
         c.execute("PRAGMA table_info(profiles)")
         columns = [col[1] for col in c.fetchall()]
         
@@ -273,6 +272,5 @@ def migrate_db():
         logger.error(f"Migration error: {e}")
         return False
 
-# Вызываем при старте
 init_db()
 migrate_db()
