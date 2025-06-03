@@ -5,7 +5,6 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 def init_db():
-    """Инициализация базы данных с проверкой"""
     conn = sqlite3.connect('teammates.db')
     c = conn.cursor()
     
@@ -134,7 +133,7 @@ def search_profiles_in_db(game=None, min_rank=None, max_rank=None, roles=None, l
         conn = sqlite3.connect('teammates.db')
         c = conn.cursor()
         
-        query = '''SELECT user_id, username, first_name, game, rank, roles, description 
+        query = '''SELECT user_id, username, first_name, nickname, gender, game, rank, roles, description, timestamp 
                    FROM profiles WHERE is_banned = 0 AND user_id != ?'''
         params = [exclude_user_id or 0]
         
@@ -167,14 +166,18 @@ def search_profiles_in_db(game=None, min_rank=None, max_rank=None, roles=None, l
             'user_id': row[0],
             'username': row[1],
             'first_name': row[2],
-            'game': row[3],
-            'rank': row[4],
-            'roles': row[5].split(",") if row[5] else [],
-            'description': row[6]
+            'nickname': row[3],
+            'gender': row[4],
+            'game': row[5],
+            'rank': row[6],
+            'roles': row[7].split(",") if row[7] else [],
+            'description': row[8],
+            'timestamp': row[9]
         } for row in results]
     except Exception as e:
         logger.error(f"Error searching profiles in DB: {e}")
         return []
+
 
 def add_report(profile_id, reporter_id, reason):
     """Добавление жалобы в базу данных"""
