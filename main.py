@@ -2,7 +2,7 @@ import telebot
 import logging
 import time
 from config import BOT_TOKEN, ADMIN_CHAT_ID
-from database import init_db, add_admin, can_report, check_auto_ban  # Явно импортируем все нужные функции
+from database import init_db, add_admin, can_report, check_auto_ban
 
 logging.basicConfig(
     level=logging.INFO,
