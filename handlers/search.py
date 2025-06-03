@@ -43,7 +43,6 @@ def show_search_results(bot, chat_id, profiles):
         )
 
 def show_search_menu(bot, message):
-    """Главное меню поиска"""
     markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
     buttons = [
         "🎮 Dota 2", 
@@ -56,7 +55,6 @@ def show_search_menu(bot, message):
     bot.send_message(message.chat.id, "Выберите вариант поиска:", reply_markup=markup)
 
 def search_by_current_game(bot, message):
-    """Поиск по текущей игре пользователя"""
     profile = get_profile_from_db(message.from_user.id)
     if not profile:
         bot.send_message(message.chat.id, "❌ Сначала заполните анкету!")
@@ -67,7 +65,6 @@ def search_by_current_game(bot, message):
         'exclude_user_id': message.from_user.id
     }
     
-    # Для Dota 2 добавляем фильтр по ролям
     if profile['game'] == 'Dota 2' and profile.get('roles'):
         filters['roles'] = profile['roles']
     
