@@ -15,7 +15,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def setup_handlers(bot):
-    """Регистрация всех обработчиков"""
     try:
         from handlers.start import setup_start_handlers
         from handlers.search import setup_search_handlers
