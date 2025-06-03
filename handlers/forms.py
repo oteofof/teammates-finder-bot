@@ -6,7 +6,6 @@ from utils.formatters import format_profile
 from utils.validators import is_valid_dota_mmr, is_valid_faceit_elo
 
 def ask_game(bot, message):
-    """Начало заполнения анкеты - запрашиваем ник"""
     msg = bot.send_message(
         message.chat.id,
         "🎮 Введите ваш игровой ник (макс. 25 символов):",
@@ -15,7 +14,6 @@ def ask_game(bot, message):
     bot.register_next_step_handler(msg, ask_gender, bot)
 
 def ask_gender(message, bot):
-    """Запрашиваем пол после ника"""
     if len(message.text) > 25:
         msg = bot.send_message(message.chat.id, "❌ Слишком длинный ник! Максимум 25 символов.")
         bot.register_next_step_handler(msg, ask_gender, bot)
@@ -34,7 +32,6 @@ def ask_gender(message, bot):
     bot.register_next_step_handler(msg, process_gender, bot, user_data)
 
 def process_gender(message, bot, user_data):
-    """Обрабатываем выбор пола"""
     if message.text not in GENDERS:
         msg = bot.send_message(message.chat.id, "Пожалуйста, выберите пол из предложенных.")
         bot.register_next_step_handler(msg, process_gender, bot, user_data)
@@ -53,7 +50,6 @@ def process_gender(message, bot, user_data):
     bot.register_next_step_handler(msg, ask_rank, bot, user_data)
 
 def ask_rank(message, bot, user_data):
-    """Запрашиваем ранг в зависимости от выбранной игры"""
     game = message.text
     if game not in ["CS2", "Dota 2", "Valorant"]:
         msg = bot.send_message(message.chat.id, "Пожалуйста, выбери игру из предложенных.")
