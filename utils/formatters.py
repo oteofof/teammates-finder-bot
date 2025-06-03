@@ -37,11 +37,27 @@ def format_search_result(profile):
     """
     Форматирует профиль для результатов поиска
     """
+    nickname = profile.get('nickname', '')
+    username = profile.get('username', 'нет username')
+    first_name = profile.get('first_name', 'Игрок')
+    gender = profile.get('gender', 'Не указан')
+    game = profile.get('game', '')
+    rank = profile.get('rank', '')
+    roles = profile.get('roles', [])
+    description = profile.get('description', '')[:100]
+    timestamp = profile.get('timestamp', '')
+
     roles_text = ""
-    if profile.get('roles') and profile['roles'] != ['Any']:
-        roles_text = f"\n🛡️ *Роли:* {', '.join(profile['roles'])}"
-    
-    return f"""*{profile.get('first_name', 'Игрок')}* (@{profile.get('username', 'нет username')})
-🎮 *Игра:* {profile.get('game', '')}
-🏆 *Ранг:* {profile.get('rank', '')}{roles_text}
-📝 *О себе:* {profile.get('description', '')[:100]}..."""
+    if roles and roles != ['Any']:
+        if isinstance(roles, str):
+            roles = [roles]
+        roles_text = f"\n🛡️ *Роли:* {', '.join(roles)}"
+
+    nickname_text = f"👤 *{nickname}* " if nickname else ""
+    updated_text = f"\n🕒 *Обновлено:* {timestamp}" if timestamp else ""
+
+    return f"""{nickname_text}(@{username})
+👫 *Пол:* {gender}
+🎮 *Игра:* {game}
+🏆 *Ранг:* {rank}{roles_text}
+📝 *О себе:* {description}...{updated_text}"""
