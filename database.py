@@ -35,7 +35,6 @@ def init_db():
     logger.info("Database initialized successfully")
 
 def can_report(reporter_id, profile_id):
-    """Проверяет, может ли пользователь отправить жалобу"""
     try:
         conn = sqlite3.connect('teammates.db')
         c = conn.cursor()
@@ -52,7 +51,6 @@ def can_report(reporter_id, profile_id):
         conn.close()
 
 def check_auto_ban(profile_id):
-    """Проверяет необходимость автоматического бана"""
     try:
         conn = sqlite3.connect('teammates.db')
         c = conn.cursor()
@@ -69,7 +67,6 @@ def check_auto_ban(profile_id):
 
 
 def save_profile_to_db(user_id, user_data, bot):
-    """Сохранение профиля с проверкой инициализации БД"""
     try:
         
         init_db()
