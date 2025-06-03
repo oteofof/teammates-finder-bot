@@ -2,15 +2,10 @@ from telebot import types
 from datetime import datetime
 
 def format_profile(profile_data):
-    """
-    Форматирует данные профиля для отображения в новом стиле
-    """
-    # Основные поля
     username = profile_data.get('username', 'нет username')
     nickname = profile_data.get('nickname', '')
     first_name = profile_data.get('first_name', 'Игрок')
     
-    # Формируем текст профиля
     profile_text = (
         f"👤 {nickname} (@{username})\n\n"
         f"👫 Пол: {profile_data.get('gender', 'Не указан')}\n"
@@ -20,11 +15,10 @@ def format_profile(profile_data):
         f"🕒 Обновлено: {profile_data.get('timestamp', 'Дата не указана')}"
     )
     
-    # Если есть роли (для Dota 2)
     roles = profile_data.get('roles', [])
     if roles and roles != ['Any']:
         if isinstance(roles, str):
-            roles = [roles]  # На случай, если роли пришли строкой
+            roles = [roles]
         profile_text = profile_text.replace(
             "🏆 Ранг:", 
             f"🏆 Ранг: {profile_data.get('rank', 'Не указан')}\n"
@@ -34,9 +28,7 @@ def format_profile(profile_data):
     return profile_text
 
 def format_search_result(profile):
-    """
-    Форматирует профиль для результатов поиска
-    """
+
     nickname = profile.get('nickname', '')
     username = profile.get('username', 'нет username')
     first_name = profile.get('first_name', 'Игрок')
