@@ -22,5 +22,5 @@ MAX_PROFILES_TO_SHOW = 5
 
 DOTA_ROLES = ["Carry", "Support", "Mid", "Offlane"]
 
-GENDERS = ["Мужской", "Женский"]  # Уже есть в вашем конфиге
-MAX_NICKNAME_LENGTH = 25  # Добавляем лимит для никаs   
+GENDERS = ["Мужской", "Женский"] 
+MAX_NICKNAME_LENGTH = 25 
